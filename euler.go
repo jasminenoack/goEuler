@@ -22,4 +22,8 @@ func main() {
 	euler4 := LargestPalindromeProduct(3)
 	fmt.Printf("Euler 4: %g", euler4)
 	fmt.Println("")
+
+	euler5 := LeastCommonMultiple(20)
+	fmt.Printf("Euler 5: %d", euler5)
+	fmt.Println("")
 }

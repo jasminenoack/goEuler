@@ -4,55 +4,6 @@ import (
 	"testing"
 )
 
-func TestMult3or5(t *testing.T) {
-	result := Mul3And5(5)
-	if result != 3 {
-		t.Errorf("%d, does not equal %d", result, 3)
-	}
-
-	result = Mul3And5(6)
-	if result != 8 {
-		t.Errorf("%d, does not equal %d", result, 8)
-	}
-
-	result = Mul3And5(7)
-	if result != 14 {
-		t.Errorf("%d, does not equal %d", result, 14)
-	}
-
-	result = Mul3And5(10)
-	if result != 23 {
-		t.Errorf("%d, does not equal %d", result, 23)
-	}
-
-	result = Mul3And5(11)
-	if result != 33 {
-		t.Errorf("%d, does not equal %d", result, 33)
-	}
-}
-
-func TestFibTotal(t *testing.T) {
-	result := FibEvenTotal(2)
-	if result != 0 {
-		t.Errorf("%d, does not equal %d", result, 0)
-	}
-
-	result = FibEvenTotal(3)
-	if result != 2 {
-		t.Errorf("%d, does not equal %d", result, 2)
-	}
-
-	result = FibEvenTotal(14)
-	if result != 10 {
-		t.Errorf("%d, does not equal %d", result, 10)
-	}
-
-	result = FibEvenTotal(100)
-	if result != 44 {
-		t.Errorf("%d, does not equal %d", result, 44)
-	}
-}
-
 func TestLargestPrimeFactor(t *testing.T) {
 	_, err := LargestPrimeFactor(0)
 	if err == nil {
@@ -110,14 +61,20 @@ func TestLargestPrimeFactor(t *testing.T) {
 	}
 }
 
-func TestLargestPalindromeProduct(t *testing.T) {
-	result := LargestPalindromeProduct(2)
-	if result != 9009 {
-		t.Errorf("%d, does not equal %d", result, 9009)
+func BenchmarkLargestPrimeFactorFor10(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		LargestPrimeFactor(10)
 	}
+}
 
-	result = LargestPalindromeProduct(1)
-	if result != 9 {
-		t.Errorf("%d, does not equal %d", result, 9)
+func BenchmarkLargestPrimeFactorFor100(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		LargestPrimeFactor(100)
+	}
+}
+
+func BenchmarkLargestPrimeFactorFor600851475143(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		LargestPrimeFactor(600851475143)
 	}
 }
